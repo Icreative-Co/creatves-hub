@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creatves Films - Admin Sign In and Membership">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Creatves Films - Sign In</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="/assets/js/purify.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <img src="/assets/images/logo2.svg" alt="Creatves Films Logo" class="logo">
+    <a href="/index.html" class="home-btn">Home</a>
+  </header>
+  <main class="hero-container">
+    <div class="hero-content">
+      <h1>Unlimited movies, TV shows, and more</h1>
+      <p>Starts at Ksh 200. Cancel anytime.</p>
+      <div class="form-toggle">
+        <button class="toggle-btn active" data-form="login">Admin Sign In</button>
+        <button class="toggle-btn" data-form="email">Join Now</button>
+      </div>
+      <form id="login-form" class="form-grid login-form" novalidate>
+        <h2>Admin Sign In</h2>
+        <div class="form-group">
+          <input type="text" id="username" name="username" required aria-describedby="username-error" placeholder="Username or Email">
+          <span id="username-error" class="error-message hidden" role="alert"></span>
+        </div>
+        <div class="form-group password-group">
+          <div class="password-wrapper">
+            <input type="password" id="password" name="password" required aria-describedby="password-error" placeholder="Password">
+            <button type="button" class="toggle-password" aria-label="Show password">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <span id="password-error" class="error-message hidden" role="alert"></span>
+        </div>
+        <div class="form-group">
+          <span id="general-error" class="error-message hidden" role="alert"></span>
+        </div>
+        <div class="form-buttons">
+          <button type="submit" class="save-btn" disabled>Sign In</button>
+          <a href="/forgot-password.html" class="forgot-password">Forgot password?</a>
+        </div>
+      </form>
+      <form id="email-form" class="form-grid email-form hidden" novalidate>
+        <h2>Join Now</h2>
+        <p>Ready to watch? Enter your email to create or restart your membership.</p>
+        <div class="form-group">
+          <input type="email" id="email" name="email" required placeholder="Email address" aria-describedby="email-error">
+          <span id="email-error" class="error-message hidden" role="alert"></span>
+        </div>
+        <button type="submit" class="cta-btn">Get Started <i class="fas fa-chevron-right"></i></button>
+      </form>
+    </div>
+  </main>
+  <section class="reasons-section">
+    <h2>More Reasons to Join</h2>
+    <div class="reasons-grid">
+      <div class="reason-card">
+        <h3>Enjoy on your TV</h3>
+        <p>Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</p>
+      </div>
+      <div class="reason-card">
+        <h3>Download your shows to watch offline</h3>
+        <p>Save your favorites easily and always have something to watch.</p>
+      </div>
+      <div class="reason-card">
+        <h3>Watch everywhere</h3>
+        <p>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</p>
+      </div>
+      <div class="reason-card">
+        <h3>Create profiles for kids</h3>
+        <p>Send kids on adventures with their favorite characters in a space made just for them — free with your membership.</p>
+      </div>
+    </div>
+  </section>
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <p>Details coming soon. Contact us for support.</p>
+  </section>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>Questions? Contact us.</p>
+      <ul class="footer-links">
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Help Centre</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div id="loading" class="hidden">
+    <span>Loading...</span>
+    <div class="spinner"></div>
+  </div>
+  <script src="/assets/js/login.js"></script>
+  <script>
+    // Password toggle and form toggle functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      // Password toggle
+      const togglePassword = document.querySelector('.toggle-password');
+      const passwordInput = document.querySelector('#password');
+      if (togglePassword && passwordInput) {
+        togglePassword.addEventListener('click', () => {
+          const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+          passwordInput.setAttribute('type', type);
+          togglePassword.querySelector('i').classList.toggle('fa-eye');
+          togglePassword.querySelector('i').classList.toggle('fa-eye-slash');
+          togglePassword.setAttribute('aria-label', `${type === 'password' ? 'Show' : 'Hide'} password`);
+        });
+      }
+
+      // Form toggle
+      const toggleButtons = document.querySelectorAll('.toggle-btn');
+      const loginForm = document.getElementById('login-form');
+      const emailForm = document.getElementById('email-form');
+      toggleButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          toggleButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          if (btn.dataset.form === 'login') {
+            loginForm.classList.remove('hidden');
+            emailForm.classList.add('hidden');
+          } else {
+            loginForm.classList.add('hidden');
+            emailForm.classList.remove('hidden');
+          }
+        });
+      });
+
+      // Placeholder email form submission
+      emailForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = DOMPurify.sanitize(document.getElementById('email').value);
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          document.getElementById('email-error').textContent = 'Please enter a valid email address';
+          document.getElementById('email-error').classList.remove('hidden');
+          return;
+        }
+        document.getElementById('email-error').classList.add('hidden');
+        alert('Email submitted: ' + email); // Replace with signup logic
+      });
+    });
+  </script>
+</body>
+</html>

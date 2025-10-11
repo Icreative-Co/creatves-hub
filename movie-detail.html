@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Detail</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/movie-detail.css" />
+  <link rel="stylesheet" href="/assets/css/video-js.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/index.html" class="logo">
+      <img src="/assets/images/logo2.svg" alt="Logo" />
+    </a>
+    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </button>
+    <ul class="nav-list">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/movies.html">Movies</a></li>
+      <li><a href="/tv-series.html">TV Series</a></li>
+      <li><a href="/music.html">Music</a></li>
+      <li><a href="/animations.html">Animations</a></li>
+      <li><a href="/manage-movies.html">Manage Movies</a></li>
+      <li class="dropdown">
+        <button class="dropdown-toggle" aria-expanded="false">
+          <i class="fa-solid fa-user"></i>
+          <span id="username"></span>
+          <i class="fa-solid fa-caret-down"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <li><button id="logout">Logout</button></li>
+        </ul>
+      </li>
+      <button class="close" aria-label="Close navigation">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </ul>
+  </nav>
+
+  <section class="movie-detail">
+    <div class="main">
+      <div class="img">
+        <img id="movie-poster" src="/assets/images/logo2.svg" alt="Movie Poster" loading="lazy" />
+      </div>
+      <div class="content">
+        <strong id="movie-episodes">Movie</strong>
+        <h2 id="movie-title">Loading...</h2>
+        <div class="badge-genre">
+          <div class="badge">
+            <span id="movie-rating">N/A</span>
+            <span id="movie-resolution">N/A</span>
+          </div>
+          <div class="genre" id="movie-genres">
+            <button class="filter-btn" aria-label="Filter by genre" aria-expanded="false">
+              <i class="fa-solid fa-filter"></i> Filter Genres
+            </button>
+            <ul class="filter-dropdown" id="filter-dropdown"></ul>
+          </div>
+        </div>
+        <div class="date-time">
+          <span><i class="fa-regular fa-calendar"></i> <span id="movie-year">Unknown</span></span>
+          <span><i class="fa-regular fa-clock"></i> <span id="movie-duration">N/A</span></span>
+        </div>
+        <div class="season-episode-selection" id="season-episode-selection" hidden>
+          <div>
+            <label for="season-select">Season:</label>
+            <select id="season-select"></select>
+          </div>
+          <div>
+            <label for="episode-select">Episode:</label>
+            <select id="episode-select"></select>
+          </div>
+        </div>
+        <p id="movie-description">Loading description...</p>
+        <div class="detail-actions">
+          <button class="watch-btn" id="watch-now">Watch Now</button>
+          <div class="prime">
+            <h3>Prime</h3>
+            <small>Available in HD</small>
+          </div>
+          <button class="share-btn">
+            <i class="fa-solid fa-share"></i> Share
+          </button>
+        </div>
+        <a href="#" id="download-link" class="download-btn" hidden>
+          <i class="fa-solid fa-download"></i> Download
+        </a>
+        <p id="mkv-help" hidden>
+          <a href="https://www.videolan.org/vlc/" target="_blank" rel="noopener">Download VLC to play .mkv files</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="video-popup" id="video-popup" hidden>
+    <div class="video-container">
+      <video id="video-player" class="video-js vjs-default-skin vjs-big-play-centered" preload="auto" width="100%"></video>
+      <button class="close-popup" id="close-popup" aria-label="Close video">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="settings-menu" id="settings-menu">
+        <button class="settings-btn" id="settings-btn" aria-label="Toggle settings">
+          <i class="fa-solid fa-gear"></i>
+        </button>
+        <div class="settings-options">
+          <label for="playback-speed">Playback Speed:</label>
+          <select id="playback-speed">
+            <option value="0.5">0.5x</option>
+            <option value="1" selected>1x</option>
+            <option value="1.5">1.5x</option>
+            <option value="2">2x</option>
+          </select>
+          <label for="volume">Volume:</label>
+          <input type="range" id="volume" min="0" max="1" step="0.1" value="1" />
+          <label for="autoplay">Autoplay:</label>
+          <input type="checkbox" id="autoplay" checked />
+          <label for="subtitles">Subtitles:</label>
+          <select id="subtitles">
+            <option value="off" selected>Off</option>
+            <option value="en">English</option>
+          </select>
+          <button id="lock-screen">Lock Screen</button>
+          <button id="unlock-screen" hidden>Unlock Screen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="carousel-section">
+    <div class="section-header">
+      <div class="subtitle">
+        <small id="carousel-subtitle">Explore</small>
+        <h2 id="carousel-title">Related Content</h2>
+      </div>
+    </div>
+    <div class="swiper related-carousel">
+      <div class="swiper-wrapper"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </section>
+
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
+  <script src="/assets/js/video.min.js"></script>
+  <script src="/assets/js/movie-detail.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Detail</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/movie-detail.css" />
+  <link rel="stylesheet" href="/assets/css/video-js.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/index.html" class="logo">
+      <img src="/assets/images/logo2.svg" alt="Logo" />
+    </a>
+    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </button>
+    <ul class="nav-list">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/movies.html">Movies</a></li>
+      <li><a href="/tv-series.html">TV Series</a></li>
+      <li><a href="/music.html">Music</a></li>
+      <li><a href="/animations.html">Animations</a></li>
+      <li><a href="/manage-movies.html">Manage Movies</a></li>
+      <li class="dropdown">
+        <button class="dropdown-toggle" aria-expanded="false">
+          <i class="fa-solid fa-user"></i>
+          <span id="username"></span>
+          <i class="fa-solid fa-caret-down"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <li><button id="logout">Logout</button></li>
+        </ul>
+      </li>
+      <button class="close" aria-label="Close navigation">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </ul>
+  </nav>
+
+  <section class="movie-detail">
+    <div class="main">
+      <div class="img">
+        <img id="movie-poster" src="/assets/images/logo2.svg" alt="Movie Poster" loading="lazy" />
+      </div>
+      <div class="content">
+        <strong id="movie-episodes">Movie</strong>
+        <h2 id="movie-title">Loading...</h2>
+        <div class="badge-genre">
+          <div class="badge">
+            <span id="movie-rating">N/A</span>
+            <span id="movie-resolution">N/A</span>
+          </div>
+          <div class="genre" id="movie-genres">
+            <button class="filter-btn" aria-label="Filter by genre" aria-expanded="false">
+              <i class="fa-solid fa-filter"></i> Filter Genres
+            </button>
+            <ul class="filter-dropdown" id="filter-dropdown"></ul>
+          </div>
+        </div>
+        <div class="date-time">
+          <span><i class="fa-regular fa-calendar"></i> <span id="movie-year">Unknown</span></span>
+          <span><i class="fa-regular fa-clock"></i> <span id="movie-duration">N/A</span></span>
+        </div>
+        <div class="season-episode-selection" id="season-episode-selection" hidden>
+          <div>
+            <label for="season-select">Season:</label>
+            <select id="season-select"></select>
+          </div>
+          <div>
+            <label for="episode-select">Episode:</label>
+            <select id="episode-select"></select>
+          </div>
+        </div>
+        <p id="movie-description">Loading description...</p>
+        <div class="detail-actions">
+          <button class="watch-btn" id="watch-now">Watch Now</button>
+          <div class="prime">
+            <h3>Prime</h3>
+            <small>Available in HD</small>
+          </div>
+          <button class="share-btn">
+            <i class="fa-solid fa-share"></i> Share
+          </button>
+        </div>
+        <a href="#" id="download-link" class="download-btn" hidden>
+          <i class="fa-solid fa-download"></i> Download
+        </a>
+        <p id="mkv-help" hidden>
+          <a href="https://www.videolan.org/vlc/" target="_blank" rel="noopener">Download VLC to play .mkv files</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="video-popup" id="video-popup" hidden>
+    <div class="video-container">
+      <video id="video-player" class="video-js vjs-default-skin vjs-big-play-centered" preload="auto" width="100%"></video>
+      <button class="close-popup" id="close-popup" aria-label="Close video">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="settings-menu" id="settings-menu">
+        <button class="settings-btn" id="settings-btn" aria-label="Toggle settings">
+          <i class="fa-solid fa-gear"></i>
+        </button>
+        <div class="settings-options">
+          <label for="playback-speed">Playback Speed:</label>
+          <select id="playback-speed">
+            <option value="0.5">0.5x</option>
+            <option value="1" selected>1x</option>
+            <option value="1.5">1.5x</option>
+            <option value="2">2x</option>
+          </select>
+          <label for="volume">Volume:</label>
+          <input type="range" id="volume" min="0" max="1" step="0.1" value="1" />
+          <label for="autoplay">Autoplay:</label>
+          <input type="checkbox" id="autoplay" checked />
+          <label for="subtitles">Subtitles:</label>
+          <select id="subtitles">
+            <option value="off" selected>Off</option>
+            <option value="en">English</option>
+          </select>
+          <button id="lock-screen">Lock Screen</button>
+          <button id="unlock-screen" hidden>Unlock Screen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="carousel-section">
+    <div class="section-header">
+      <div class="subtitle">
+        <small id="carousel-subtitle">Explore</small>
+        <h2 id="carousel-title">Related Content</h2>
+      </div>
+    </div>
+    <div class="swiper related-carousel">
+      <div class="swiper-wrapper"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </section>
+
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
+  <script src="/assets/js/video.min.js"></script>
+  <script src="/assets/js/movie-detail.js"></script>
+</body>
+</html>

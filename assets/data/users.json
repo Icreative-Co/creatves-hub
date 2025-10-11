@@ -1,0 +1,14 @@
+[
+  {
+    "username": "admin",
+    "email": "admin@creatives.com",
+    "password": "$2b$10$zFJ/k47dHumuXj7t5Q8yxeYPXr3GuALCE/U9FSUemtt72TVGH6yIe",
+    "id": 1
+  },
+  {
+    "username": "user1",
+    "email": "user1@creatives.com",
+    "password": "$2b$10$3KHn790Tqbm0sHzGax0TT.Qx9nyIjFINxMroRh1XVhzYOuwvcwJTO",
+    "id": 2
+  }
+]

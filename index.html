@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creatives - Your Ultimate Entertainment Streaming Platform">
+  <title>Creatives - Entertainment Streaming</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/assets/css/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar" aria-label="Main navigation">
+      <div class="logo">
+        <a href="#hero"><img src="/assets/images/logo2.svg" alt="Creatives Logo" width="120" height="40" loading="lazy"></a>
+      </div>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-list">
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+      <ul class="nav-list" id="nav-list">
+        <li><a href="#hero" aria-current="page">Home</a></li>
+        <li><a href="#movies">Movies</a></li>
+        <li><a href="#series">Web Series</a></li>
+        <li><a href="#music">Music</a></li>
+        <li><a href="#pricing">Contacts</a></li>
+        <li><a href="/manage-movies.html">Manage Movies</a></li>
+        <li class="dropdown">
+          <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false" id="user-menu">
+            <span id="username">Guest</span> <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="user-menu">
+            <li><button id="logout" type="button" aria-label="Log Out">Log Out</button></li>
+          </ul>
+        </li>
+        <button class="close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="content">
+        <p id="hero-category">CREATIVES HUB</p>
+        <h1 id="hero-title">Unlimited <strong>Movies</strong>, Series, & <strong>Music</strong>.</h1>
+        <div class="meta-wrapper">
+          <div class="badge">
+            <span id="hero-rating">PG 18</span>
+            <span id="hero-resolution">HD</span>
+          </div>
+          <div class="genre">
+            <span id="hero-genres"><a href="#">Romance</a>, <a href="#">Drama</a></span>
+          </div>
+          <div class="date-time">
+            <span id="hero-year"><i class="fa-solid fa-calendar-days"></i> 2022</span>
+            <span id="hero-duration"><i class="fa-regular fa-clock"></i> 128 min</span>
+          </div>
+        </div>
+        <p id="hero-description">Discover your next favorite movie or series.</p>
+        <button class="watch-btn" type="button" aria-label="Watch Now" id="hero-watch"><i class="fa-solid fa-play"></i> Watch Now</button>
+      </div>
+    </section>
+
+    <section class="carousel-section" id="movies">
+      <header class="section-header">
+        <div class="subtitle">
+          <small>Online Streaming</small>
+          <h2>Your Movies</h2>
+        </div>
+        <div class="buttons">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="action" aria-pressed="false">Action</button>
+          <button type="button" data-filter="comedy" aria-pressed="false">Comedy</button>
+          <button type="button" data-filter="thriller" aria-pressed="false">Thriller</button>
+        </div>
+      </header>
+      <div class="swiper movies-carousel">
+        <div class="swiper-wrapper" id="movies-carousel"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </section>
+
+    <section class="service" id="service">
+      <div class="main">
+        <div class="featured-posters">
+          <img src="/assets/images/service-banner.jpg" alt="Featured Poster 1" class="featured-poster" loading="lazy">
+          <img src="/assets/images/service-banner.jpg" alt="Featured Poster 2" class="featured-poster" loading="lazy">
+        </div>
+        <div class="content">
+          <small>Our Services</small>
+          <h2>Download Your Shows & Music Offline</h2>
+          <p>Enjoy movies, series, and music offline with our Wi-Fi service. Stream or download seamlessly.</p>
+          <ul class="service-list">
+            <li class="service-card">
+              <div class="icon"><i class="fa-solid fa-tv"></i></div>
+              <div class="service-content">
+                <h3>Enjoy on Your TV</h3>
+                <p>Stream your favorite content on any smart TV with ease.</p>
+              </div>
+            </li>
+            <li class="service-card">
+              <div class="icon"><i class="fa-solid fa-video"></i></div>
+              <div class="service-content">
+                <h3>Watch & Listen Anywhere</h3>
+                <p>Access content on multiple devices, anytime, anywhere.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="carousel-section" id="series">
+      <header class="section-header">
+        <div class="subtitle">
+          <small>Best TV Series</small>
+          <h2>World Best TV Series</h2>
+        </div>
+        <div class="buttons">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="action" aria-pressed="false">Action</button>
+          <button type="button" data-filter="drama" aria-pressed="false">Drama</button>
+          <button type="button" data-filter="fantasy" aria-pressed="false">Fantasy</button>
+        </div>
+      </header>
+      <div class="swiper series-carousel">
+        <div class="swiper-wrapper" id="series-carousel"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </section>
+
+    <section class="carousel-section" id="music">
+      <header class="section-header">
+        <div class="subtitle">
+          <small>Top Picks</small>
+          <h2>Trending Music</h2>
+        </div>
+        <div class="buttons">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="pop" aria-pressed="false">Pop</button>
+          <button type="button" data-filter="rock" aria-pressed="false">Rock</button>
+          <button type="button" data-filter="hip-hop" aria-pressed="false">Hip-Hop</button>
+        </div>
+      </header>
+      <div class="swiper music-carousel">
+        <div class="swiper-wrapper" id="music-carousel"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </section>
+
+    <section class="trial" id="pricing">
+      <div class="main">
+        <div class="content">
+          <h2>Start Your 30-Day Free Trial</h2>
+          <p>Enter your email to enjoy movies, series, and music.</p>
+        </div>
+        <form class="trial-form" aria-label="Free Trial Signup">
+          <label for="email" class="visually-hidden">Email Address</label>
+          <input type="email" id="email" placeholder="Enter Your Email" aria-label="Email Address" required>
+          <button type="submit" aria-label="Get Started">Get Started</button>
+          <p id="trial-error" class="error-message hidden"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer aria-label="Site footer">
+    <div class="footer-top">
+      <nav>
+        <div class="logo">
+          <img src="/assets/images/logo2.svg" alt="Creatives Logo" width="120" height="40" loading="lazy">
+        </div>
+        <ul class="nav-list">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#movies">Movies</a></li>
+          <li><a href="#music">Music</a></li>
+          <li><a href="#series">Web Series</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="/manage-movies.html">Manage Movies</a></li>
+        </ul>
+      </nav>
+      <div class="links">
+        <div class="text-links">
+          <a href="#">FAQ</a>
+          <a href="#">Help Center</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Privacy</a>
+        </div>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 <a href="#">Creatives</a>. All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="/config?v=1"></script>
+  <script src="/assets/js/purify.min.js"></script>
+  <script defer src="/assets/js/swiper-bundle.min.js"></script>
+  <script defer src="/assets/js/app.js?v=1"></script>
+</body>
+</html>
