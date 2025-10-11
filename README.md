@@ -1,16 +1,16 @@
 <div align="center">
   
-  ![GitHub repo size](https://img.shields.io/github/repo-size/pawantech12/filmlane-website)
-  ![GitHub stars](https://img.shields.io/github/stars/pawantech12/filmlane-website?style=social)
-  ![GitHub forks](https://img.shields.io/github/forks/pawantech12/filmlane-website?style=social)
+  ![GitHub repo size](https://img.shields.io/github/repo-size/Icreative-Co/creatves-hub)
+  ![GitHub stars](https://img.shields.io/github/stars/Icreative-Co/creatves-hub?style=social)
+  ![GitHub forks](https://img.shields.io/github/forks/Icreative-Co/creatves-hub?style=social)
 
   <br />
 
-  <h2 align="center">Responsive Movie Website</h2>
+  <h2 align="center">ReelCrea - Responsive Movie Streaming Platform</h2>
 
-  FilmLane is fully responsive Movie Streaming website made using HTML, CSS, and JavaScript.
+  ReelCrea is a production-ready movie streaming platform built with HTML, CSS, JavaScript, and Node.js backend. It supports .mkv/.mp4 playback, user authentication, admin management, and dynamic content delivery.
 
-  <a href="https://pawantech12.github.io/filmlane-website/"><strong>➥ Live Demo</strong></a>
+  <a href="https://reelcrea.vercel.app/"><strong>➥ Live Demo</strong></a>
 
 </div>
 
@@ -18,69 +18,37 @@
 
 ### Desktop Preview
 
-https://github.com/pawantech12/filmlane-website/assets/118673866/6bd4a657-9c8a-406a-b733-1b8d1013c593
+![Desktop Preview](https://github.com/Icreative-Co/creatves-hub/assets/118673866/6bd4a657-9c8a-406a-b733-1b8d1013c593)
 
+### Features
+
+- **Responsive Navigation**: Hamburger menu with user dropdown and logout functionality
+- **Hero Section**: Dynamic featured content from movies.json
+- **Movie Carousels**: Swiper.js powered sections for movies, series, and music
+- **Genre Filtering**: Interactive genre-based content filtering
+- **Movie Detail Page**: Rich media details with poster, description, and video playback
+- **.mkv Support**: Client-side FFmpeg.js transcoding with optimized performance
+- **TV Series Support**: Season and episode selectors with dynamic playback
+- **User Authentication**: JWT-based login system with admin/user roles
+- **Admin Panel**: Secure movie management (add/edit/delete)
+- **Video.js Integration**: Professional video player with custom settings
+- **Performance Optimized**: Fast transcoding with ultrafast preset and native .mkv fallback
+- **Mobile Responsive**: Optimized for all screen sizes and devices
 
 ### Prerequisites
 
-Before you begin, ensure you have met the following requirements:
+#### Frontend
+- Basic/Intermediate HTML, CSS, JavaScript knowledge
+- Modern browser (Chrome, Firefox, Edge recommended)
 
-* You Should Know Basic or Intermediate of HTML ,CSS and JavaScript
+#### Backend
+- Node.js v16+ and npm
+- Basic Express.js understanding
+- FFmpeg (optional, for server-side transcoding)
 
-Bootstrap Icon :
-```html
-<!-- bootstrap icon link  -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-```
+### Installation
 
-Fontawesome Icon :
-```html
-<!-- fontawesome icon link  -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
-```
-
-### Project Contain
-
-* Responsive Navigation Bar with Hamburger Menu
-* Hero Section
-* Upcoming Movie Section
-* Service Section
-* Top Rated Movie Section
-* TV Series Section
-* Trial Section
-* Footer Section
-* Multipage Movie webite
-* Added Movie Detail Page
-
-### Font Family
- 
- * I have Used Google Fonts - `Poppins`.For Using this font copy below code and paste it in your project :
- 
- ```html
- <!-- google font link  -->
- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
- ```
-
-### Run Locally
-
-To run **FilmLane** locally, run this command on your git bash:
-
-Linux and macOS:
-
+#### 1. Clone Repository
 ```bash
-sudo git clone https://github.com/pawantech12/filmlane-website.git
-```
-
-Windows:
-
-```bash
-git clone https://github.com/pawantech12/filmlane-website.git
-```
-
-### Contact
-
-If you want to contact with me you can reach me at [Instagram](https://www.instagram.com/codewithpawan/).
-
-### License
-
-This project is **Free To Use** and does not contains any license.
+git clone https://github.com/Icreative-Co/creatves-hub.git
+cd creatves-hub
